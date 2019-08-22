@@ -1,8 +1,6 @@
 # Animate.scss
 
-The Sassy version of the much loved [Animate.css](https://github.com/daneden/animate.css). 
-
-Why? Because I wanted a way to drop in the entire collection without bloat & without the hassle of cherry-picking per project. 
+The Sassy version of the much loved [Animate.css](https://github.com/daneden/animate.css). Why? Because I wanted a way to drop in the entire collection without bloat & without the hassle of cherry-picking per project. 
 
 ## Get Started
 
