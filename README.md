@@ -4,6 +4,13 @@ The Sassy version of the much loved [Animate.css](https://github.com/daneden/ani
 
 Why? Because I wanted a way to drop in the entire collection without bloat & without the hassle of cherry-picking per project. 
 
+## Get Started
+
+1. Add the `animate` folder to your Sass source directory. 
+2. Add `@import "animate/import" to your Sass flow. 
+3. Edit `_animate.scss` to include / exclude animations. 
+4. Animate!
+
 ## Basic HTML
 
     <div id="modal">
