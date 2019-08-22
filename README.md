@@ -1,6 +1,50 @@
 # Animate.scss
-The Sassy version of the much loved [Animate.css](https://github.com/daneden/animate.css)
 
+The Sassy version of the much loved [Animate.css](https://github.com/daneden/animate.css). 
+
+Why? Because I wanted a way to drop in the entire collection without bloat & without the hassle of cherry-picking per project. 
+
+## Basic HTML
+
+    <div id="modal">
+        <button id="modal-open"></button>
+        <div id="modal-overlay">
+            <button id="modal-close"></button>
+            <div id="modal-content">
+                <!-- content her -->
+            </div><!-- #modal-content -->
+        </div><!-- #modal-overlay -->
+    </div><!-- #modal -->
+
+## Bascic CSS
+
+Using `data-modal` attribute set via JavaScript
+
+    // Either fallback styles (na here)
+    // or styles that don't impact tranition
+    #modal-content {}
+
+    // The initial state
+    #modal-content:not([data-modal]) {}
+
+    // Transition timing + delay
+    #modal-content[data-modal] {
+        @include animated(500ms);
+    }
+
+    // Open transition
+    #modal-content[data-modal="true"] {
+        @extend %bounceInLeft;
+    }
+
+    // Close transition
+    #modal-content[data-modal="false"] {
+        @extend %bounceOutRight;
+    }
+
+## Basic JS
+    
+    // todo
 
 ## @include
 
