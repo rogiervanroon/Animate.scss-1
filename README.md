@@ -5,7 +5,7 @@ The Sassy version of the much loved [Animate.css](https://github.com/daneden/ani
 ## Get Started
 
 1. Add the `animate` folder to your Sass source directory. 
-2. Add `@import "animate/import` to your Sass flow. 
+2. Add `@import "animate/import";` to your Sass flow. 
 3. Edit `_animate.scss` to include / exclude animations. 
 4. Animate!
 
