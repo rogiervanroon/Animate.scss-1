@@ -12,26 +12,26 @@
 
 
 // -------------------------------------------------------
-// The mixins
+// The usage @mixin
 // -------------------------------------------------------
-
-@mixin animated($duration: 300ms, $delay: 0ms) {
-  -webkit-animation-duration: $duration;
-  animation-duration: $duration;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation-delay: $delay;
-  animation-delay: $delay;
-}
-
-@mixin animated-infinite {
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-}
+@mixin animated($duration: 300ms, $delay: 0ms, $infinite: false) {
+	-webkit-animation-duration: $duration;
+	animation-duration: $duration;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-delay: $delay;
+	animation-delay: $delay;
+	
+	@if $infinite == true {
+		-webkit-animation-iteration-count: infinite;
+		animation-iteration-count: infinite;		
+  }	
+  
+} //
 
 
 // -------------------------------------------------------
-// The big mamma mixin 
+// The big mamma @mixin 
 // -------------------------------------------------------
 @mixin animated-global {
 
