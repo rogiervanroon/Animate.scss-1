@@ -9,51 +9,12 @@ The Sassy version of the much loved [Animate.css](https://github.com/daneden/ani
 3. Edit `_animate.scss` to include / exclude animations. 
 4. Animate!
 
-## Basic HTML
-
-    <div id="modal">
-        <button id="modal-open"></button>
-        <div id="modal-overlay">
-            <button id="modal-close"></button>
-            <div id="modal-content">
-                <!-- content her -->
-            </div><!-- #modal-content -->
-        </div><!-- #modal-overlay -->
-    </div><!-- #modal -->
-
-## Bascic CSS
-
-Using `data-modal` attribute set via JavaScript
-
-    // Either fallback styles (na here)
-    // or styles that don't impact tranition
-    #modal-content {}
-
-    // The initial state
-    #modal-content:not([data-modal]) {}
-
-    // Transition timing + delay
-    #modal-content[data-modal] {
-        @include animated(500ms);
-    }
-
-    // Open transition
-    #modal-content[data-modal="true"] {
-        @extend %bounceInLeft;
-    }
-
-    // Close transition
-    #modal-content[data-modal="false"] {
-        @extend %bounceOutRight;
-    }
-
-## Basic JS
-    
-    // todo
-
 ## @include
 
-    @include animated($duration, $delay, $infinte);
+`$delay` = false || 300ms
+`$infinite` = false || true
+
+   @include animated($duration: 300ms, $delay: false, $infinite: false) 
 
 ## @extend
 
@@ -155,4 +116,46 @@ Using `data-modal` attribute set via JavaScript
     @extend %zoomOutLeft;
     @extend %zoomOutRight;
     @extend %zoomOutUp;
+
+## Basic HTML
+
+    <div id="modal">
+        <button id="modal-open"></button>
+        <div id="modal-overlay">
+            <button id="modal-close"></button>
+            <div id="modal-content">
+                <!-- content her -->
+            </div><!-- #modal-content -->
+        </div><!-- #modal-overlay -->
+    </div><!-- #modal -->
+
+## Bascic CSS
+
+Using `data-modal` attribute set via JavaScript
+
+    // Either fallback styles (na here)
+    // or styles that don't impact tranition
+    #modal-content {}
+
+    // The initial state
+    #modal-content:not([data-modal]) {}
+
+    // Transition timing + delay
+    #modal-content[data-modal] {
+        @include animated(500ms);
+    }
+
+    // Open transition
+    #modal-content[data-modal="true"] {
+        @extend %bounceInLeft;
+    }
+
+    // Close transition
+    #modal-content[data-modal="false"] {
+        @extend %bounceOutRight;
+    }
+
+## Basic JS
+    
+    // todo
 
