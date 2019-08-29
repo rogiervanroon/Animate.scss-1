@@ -12,6 +12,7 @@ The Sassy version of the much loved [Animate.css](https://github.com/daneden/ani
 ## @include
 
 `$delay` = false || 300ms
+
 `$infinite` = false || true
 
    @include animated($duration: 300ms, $delay: false, $infinite: false) 
