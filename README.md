@@ -53,8 +53,7 @@ Using `data-modal` attribute set via JavaScript
 
 ## @include
 
-    @include animated($duration, $delay);
-    @include animated-infinite; 
+    @include animated($duration, $delay, $infinte);
 
 ## @extend
 
