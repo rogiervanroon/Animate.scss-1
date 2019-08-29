@@ -14,7 +14,7 @@
 // -------------------------------------------------------
 // The usage @mixin
 // -------------------------------------------------------
-@mixin animated($duration: 300ms, $delay: 0ms, $infinite: false) {
+@mixin animated($duration: 300ms, $delay: false, $infinite: false) {
 	-webkit-animation-duration: $duration;
 	animation-duration: $duration;
 	-webkit-animation-fill-mode: both;
@@ -22,10 +22,14 @@
 	-webkit-animation-delay: $delay;
 	animation-delay: $delay;
 	
+	@if $delay != false {
+		-webkit-animation-delay: $delay;
+		animation-delay: $delay;    
+	}	
 	@if $infinite == true {
 		-webkit-animation-iteration-count: infinite;
 		animation-iteration-count: infinite;		
-  }	
+	}	
   
 } //
 
