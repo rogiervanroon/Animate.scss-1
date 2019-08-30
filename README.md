@@ -172,6 +172,16 @@ We're going to use vanila JavaScript  to add and remove a `[data-mobile]` attrib
 
 ```
 
+The JavaScript for animating will use 3 handlers:
+
+```
+function mobileOpenAnimate() {}
+
+function mobileCloseAnimate() {}
+
+function mobileSweep() {}
+```
+
 ## The Overlay
 
 - Needs to start and end with `display: none` so the contents are hidden to keyboard navigation. 
