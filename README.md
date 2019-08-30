@@ -172,17 +172,133 @@ We're going to use vanila JavaScript  to add and remove a `[data-mobile]` attrib
 
 ```
 
+## #mobile-overlay CSS
+
+- Needs to start and end with `display: none` so the contents are hidden to keyboard navigation. 
+- Should be the first thing to fade in - the animation should be the first and relatively fast. 
+- Should be the last thing to fade out - the animation should be the longest or delayed. I went with longer.
+
+```
+// Styles that don't affect the transition can go here.
+
+#mobile-overlay {}
+
+// By setting the display here,
+// we don't need JS to set inline CSS. 
+#mobile-overlay:not([data-mobile]) {
+    display: none;
+}
+
+
+// If the open and close timing were the same,
+// we could put @include animated here. 
+#mobile-overlay[data-mobile] {
+   // nothing here
+}
+
+// Open
+#mobile-overlay[data-mobile="true"] {
+      @include animated(300ms);
+      @extend %fadeIn;
+}
+
+// Close
+// This is the longest close animation - important
+// to the JS timeout on the mobileSweep function. 
+#mobile-overlay[data-mobile="false"] {
+      @include animated(500ms);
+      @extend %fadeOut;
+}
+```
+
+## #mobile-content CSS
+
+- This is the main mobile menu container. 
+- It should slide in and out from the right.
+- On open, it should wait a bit to let the overlay start.
+- On close, it should finish exiting just ahead of the overlay fading out. 
+    
+```
+// Open
+#mobile-content[data-mobile="true"] {
+    @include animated(300ms, 100ms); // wait for overlay
+    @extend %slideInRight;
+}
+
+// Close
+#mobile-content[data-mobile="false"] {
+    @include animated(300ms);
+    @extend %slideOutRight;
+}
+```
+
+## #mobile-top & #mobile-bottom CSS
+
+- These are blocks above and below the menu's `ul` block. Things like branding, social links, and search forms would go in these. 
+- These should fade in as the menu opens. 
+- The fade should wait a bit for `#mobile-content`, which has a delay. 
+- These do not need a close animation. 
+
+```
+// Open
+#mobile-top[data-mobile="true"],
+#mobile-bottom[data-mobile="true"] {
+    @include animated(300ms, 200ms); // wait for overlay + content
+    @extend %fadeIn;
+}
+```
+
+## #mobile-menu CSS
+
+- This is the main `ul` block. 
+- It should fade in from the right. 
+- The fade should wait a bit for `#mobile-content`, which has a delay.
+- This does not need a close animation. 
+
+```
+// Open
+#mobile-menu[data-mobile="true"] {
+    @include animated(200ms, 300ms); // wait for overlay + content
+    @extend %fadeInRight;
+}
+```
+
+## Basic JS
+
 The JavaScript for animating will use 3 handlers:
 
 ```
+// Animation Elements
+let mobile_overlay = document.getElementById('mobile-overlay');
+let mobile_content = document.getElementById('mobile-content');
+let mobile_top = document.getElementById('mobile-top');
+let mobile_menu = document.getElementById('mobile-menu');
+let mobile_bottom = document.getElementById('mobile-bottom');
+
+
+// Open animation
 function mobileOpenAnimate() {
-      // stuff here
-}
+      document.body.setAttribute('data-mobile', 'true');
+      mobile_overlay.setAttribute('data-mobile', 'true');
+      mobile_content.setAttribute('data-mobile', 'true');
+      mobile_top.setAttribute('data-mobile', 'true');
+      mobile_menu.setAttribute('data-mobile', 'true');
+      mobile_bottom.setAttribute('data-mobile', 'true');
+} //
 
+// Close animation
 function mobileCloseAnimate() {
-      // stuff here
-}
+      mobile_overlay.setAttribute('data-mobile', 'false');
+      mobile_content.setAttribute('data-mobile', 'false');
 
+      // Not animated out - removed on sweep
+      // mobile_top.setAttribute('data-mobile', 'false');   
+      // mobile_menu.setAttribute('data-mobile', 'false');   
+      // mobile_bottom.setAttribute('data-mobile', 'false');   
+} //
+
+// Sweep
+// Most important for returning the overlay to display: none. 
 function mobileSweep() {
       var sweep_mobile = Array.from(document.querySelectorAll('[data-mobile]'));
       sweep_mobile.forEach(element => {
@@ -204,46 +320,11 @@ function mobileCloseClick() {
       event.preventDefault();
       mobileCloseAnimate();
       // other stuff
-
+      
+      // wait for longest close animation,
+      // which is 500ms on the overlay
       setTimeout(() => {
             mobileSweep();
-      }, 501); // longest CSS close animation is 500ms
+      }, 501); 
 }
-```
-
-## #mobile-overlay CSS
-
-- Needs to start and end with `display: none` so the contents are hidden to keyboard navigation. 
-- Should be the first thing to fade in. 
-- Should be the last thing to fade out. 
-
-```
-// On load + after close 
-#mobile-overlay:not([data-mobile]) {
-    display: none;
-}
-
-// The overlay can fade in and out at same rate,
-// so we put the animating timing here. 
-#mobile-overlay[data-mobile] {
-    @include animated(500ms);
-}
-
-// Open
-#mobile-overlay[data-mobile="true"] {
-    @extend %fadeIn;
-}
-
-// Close
-#mobile-overlay[data-mobile="false"] {
-    @extend %fadeOut;
-}
-```
-
-
-## Basic JS
-    
-```
-// todo
-```
 
