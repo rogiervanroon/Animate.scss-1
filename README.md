@@ -175,11 +175,40 @@ We're going to use vanila JavaScript  to add and remove a `[data-mobile]` attrib
 The JavaScript for animating will use 3 handlers:
 
 ```
-function mobileOpenAnimate() {}
+function mobileOpenAnimate() {
+      // stuff here
+}
 
-function mobileCloseAnimate() {}
+function mobileCloseAnimate() {
+      // stuff here
+}
 
-function mobileSweep() {}
+function mobileSweep() {
+      var sweep_mobile = Array.from(document.querySelectorAll('[data-mobile]'));
+      sweep_mobile.forEach(element => {
+            element.removeAttribute('data-mobile');
+      });
+}
+```
+
+The Javascript click handlers need to include this:
+
+```
+function mobileOpenClick() {
+      event.preventDefault();
+      mobileOpenAnimate();
+      // other stuff
+} //
+
+function mobileCloseClick() {
+      event.preventDefault();
+      mobileCloseAnimate();
+      // other stuff
+
+      setTimeout(() => {
+            mobileSweep();
+      }, 501); // longest CSS close animation is 500ms
+}
 ```
 
 ## The Overlay
@@ -199,7 +228,7 @@ function mobileSweep() {}
 // The overlay can fade in and out at same rate,
 // so we put the animating timing here. 
 #mobile-overlay[data-mobile] {
-    @include animated(800ms);
+    @include animated(500ms);
 }
 
 // Open
