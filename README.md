@@ -130,7 +130,7 @@ Let's say we want to animate the following mobile menu:
 - `mobile-menu` should fade in from the right. This does not need an out transition. 
 
 
-      <nav id="mobile-nav" aria-label="Site Navigation">
+      <nav id="mobile-nav" aria-label="Site Navigation"> 
 
             <button id="mobile-open">
             <i class="fas fa-bars"></i>
