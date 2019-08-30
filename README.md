@@ -132,9 +132,7 @@ Let's say we want to animate the following mobile menu:
 ```
 <nav id="mobile-nav" aria-label="Site Navigation"> 
 
-      <button id="mobile-open">
-      <i class="fas fa-bars"></i>
-      </button>
+      <button id="mobile-open">+</button>
 
       <div id="mobile-overlay">
 
