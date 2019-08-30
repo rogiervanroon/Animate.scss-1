@@ -179,7 +179,6 @@ We're going to use vanila JavaScript  to add and remove a `[data-mobile]` attrib
 
 ```
 // Styles that don't affect the transition can go here.
-
 #mobile-overlay {}
 
 // By setting the display here,
@@ -187,7 +186,6 @@ We're going to use vanila JavaScript  to add and remove a `[data-mobile]` attrib
 #mobile-overlay:not([data-mobile]) {
     display: none;
 }
-
 
 // If the open and close timing were the same,
 // we could put @include animated here. 
