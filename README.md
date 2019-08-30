@@ -124,63 +124,46 @@ Let's say we want to animate the following mobile menu:
 
 - `#mobile-overlay` should fade in and out. 
 - `#mobile-content` should slide open and closed from the right. 
--- On open, this should wait a bit for `#mobile-overlay` to start.
--- On close, this should finish exiting a bit faster than `#mobile-overlay`. 
+- On open, this should wait a bit for `#mobile-overlay` to start.
+- On close, this should finish exiting a bit faster than `#mobile-overlay`. 
 - `#mobile-top` and `#mobile-bottom` should fade in. These do not need an out transition. 
 - `mobile-menu` should fade in from the right. This does not need an out transition. 
 
+```
+<nav id="mobile-nav" aria-label="Site Navigation"> 
 
-      <nav id="mobile-nav" aria-label="Site Navigation"> 
+      <button id="mobile-open">
+      <i class="fas fa-bars"></i>
+      </button>
 
-            <button id="mobile-open">
-            <i class="fas fa-bars"></i>
-            </button>
+      <div id="mobile-overlay">
 
-            <div id="mobile-overlay">
+            <button id="mobile-close">X</button>
 
-                  <button id="mobile-close">X</button>
+            <div id="mobile-content">
 
-                  <div id="mobile-content">
+                  <div id="mobile-top"></div>
 
-                        <div id="mobile-top"></div>
+                  <ul id="mobile-menu" class="menu"></ul>
 
-                        <ul id="mobile-menu" class="menu"></ul>
+                  <div id="mobile-bottom"></div>
 
-                        <div id="mobile-bottom"></div>
+            </div><!-- #mobile-content -->
 
-                  </div><!-- #mobile-content -->
+      </div><!-- #mobile-overlay -->
 
-            </div><!-- #mobile-overlay -->
-
-      </nav><!-- #mobile-nav -->
+</nav><!-- #mobile-nav -->
+```
 
 ## Bascic CSS
 
-Using `data-modal` attribute set via JavaScript
-
-    // Either fallback styles (na here)
-    // or styles that don't impact tranition
-    #modal-content {}
-
-    // The initial state
-    #modal-content:not([data-modal]) {}
-
-    // Transition timing + delay
-    #modal-content[data-modal] {
-        @include animated(500ms);
-    }
-
-    // Open transition
-    #modal-content[data-modal="true"] {
-        @extend %bounceInLeft;
-    }
-
-    // Close transition
-    #modal-content[data-modal="false"] {
-        @extend %bounceOutRight;
-    }
+```
+// todo
+```
 
 ## Basic JS
     
-    // todo
+```
+// todo
+```
 
