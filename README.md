@@ -172,7 +172,38 @@ We're going to use vanila JavaScript  to add and remove a `[data-mobile]` attrib
 
 ```
 
-## Bascic CSS
+## The Overlay
+
+- Needs to start and end with `display: none` so the contents are hidden to keyboard navigation. 
+- Should be the first thing to fade in. 
+- Should be the last thing to fade out. 
+
+*CSS*
+
+```
+// On load + after close 
+#mobile-overlay:not([data-mobile]) {
+    display: none;
+}
+
+// The overlay can fade in and out at same rate,
+// so we put the animating timing here. 
+#mobile-overlay[data-mobile] {
+    @include animated(800ms);
+}
+
+// Open
+#mobile-overlay[data-mobile="true"] {
+    @extend %fadeIn;
+}
+
+// Close
+#mobile-overlay[data-mobile="false"] {
+    @extend %fadeOut;
+}
+```
+
+*JS*
 
 ```
 // todo
