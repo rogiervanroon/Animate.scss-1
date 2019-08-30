@@ -211,13 +211,11 @@ function mobileCloseClick() {
 }
 ```
 
-## The Overlay
+## #mobile-overlay CSS
 
 - Needs to start and end with `display: none` so the contents are hidden to keyboard navigation. 
 - Should be the first thing to fade in. 
 - Should be the last thing to fade out. 
-
-*CSS*
 
 ```
 // On load + after close 
@@ -242,11 +240,6 @@ function mobileCloseClick() {
 }
 ```
 
-*JS*
-
-```
-// todo
-```
 
 ## Basic JS
     
