@@ -301,7 +301,7 @@ function mobileSweep() {
       sweep_mobile.forEach(element => {
             element.removeAttribute('data-mobile');
       });
-}
+} //
 ```
 
 The Javascript click handlers need to include this:
@@ -323,5 +323,5 @@ function mobileCloseClick() {
       setTimeout(() => {
             mobileSweep();
       }, 501); 
-}
+} //
 
