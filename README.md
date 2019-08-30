@@ -124,10 +124,11 @@ Let's say we want to animate the following mobile menu:
 
 - `#mobile-overlay` should fade in and out. 
 - `#mobile-content` should slide open and closed from the right. 
-    On open, this should wait a bit for `#mobile-overlay` to start.
-    On close, this should finish exiting a bit faster than `#mobile-overlay`. 
 - `#mobile-top` and `#mobile-bottom` should fade in. These do not need an out transition. 
 - `mobile-menu` should fade in from the right. This does not need an out transition. 
+- Durations and delays should create a subtle layered effect.
+- To help create the layered effect, the open animations can use up to 500ms. 
+- The close animation does take 500ms, but is visually a bit faster. 
 
 ```
 <nav id="mobile-nav" aria-label="Site Navigation"> 
