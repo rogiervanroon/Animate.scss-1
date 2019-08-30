@@ -155,6 +155,23 @@ Let's say we want to animate the following mobile menu:
 </nav><!-- #mobile-nav -->
 ```
 
+## The Premise
+
+We're going to use vanila JavaScript  to add and remove a `[data-mobile]` attribute to the elments we're animating. This gives each elment several CSS states to work with:
+
+```
+#element {}
+
+#element:not([data-mobile]) {}
+
+#element[data-mobile] {}
+
+#element[data-mobile="true"] {}
+
+#element[data-mobile="false"] {}
+
+```
+
 ## Bascic CSS
 
 ```
